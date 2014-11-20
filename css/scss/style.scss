@@ -1,0 +1,203 @@
+@import '_mixins';
+@import '_animations';
+
+* {
+	@include box-sizing(border-box);
+	font-family: 'Indie Flower', cursive;
+}
+
+body {
+	background:url(../img/footer_lodyas.png) repeat 0 0;
+	font-size:20px;
+	&.font1 * { font-family: 'Indie Flower', cursive; }	
+	&.font2 * { font-family: 'Lobster', cursive; }
+	&.font3 * { font-family: 'Poiret One', cursive; }	
+	&.font4 * { font-family: 'Coming Soon', cursive; }	
+	&.font5 * { font-family: 'Fredoka One', cursive; }	
+	&.font6 * { font-family: 'Chewy', cursive; }	
+	&.font7 * { font-family: 'Bangers', cursive; }
+}
+
+nav.main-nav {
+	z-index:1;
+	position:absolute;
+	ul li {
+		display:inline;
+		a {
+			color:#fff;
+			text-decoration:none;
+			&:hover {
+				text-decoration:underline;
+			}
+		}
+	}
+}
+
+.center-container {
+	z-index:0;
+	display:table;
+	width:100%;
+	text-align:center;
+	top:0;
+	height:100%;
+	left:0;
+	position:absolute;
+	.center {
+		display: table-cell;
+		text-align: center;
+		vertical-align: middle;
+	}
+}
+
+.object {
+	width:200px;
+	height:200px;
+	background:#FF2400;
+	margin:0 auto;	
+	cursor:pointer;
+}
+
+.object1 {
+	@include transition(all, 500ms, ease-in-out);
+	&:hover{ 
+		@include border-radius(50%);
+		background:#7f7fff;
+	}
+}
+
+
+.object2 {
+	@include transform(rotate(20deg));
+}
+
+.object3, .object5 {
+	@include transition(all, 500ms, ease-in-out);
+	height:50px;
+	position:relative;
+	span {
+		line-height:2.5;
+	}
+	&:after {
+		content: "";
+		opacity:0;
+	}
+	&:hover{ 
+		@include border-radius(50%);
+		background:url(../img/indio.png) 0 0;
+		background-size:cover;
+		width:400px;
+		height:400px;
+		span { display:none; }
+		&:after {
+			content: "JAU!";
+			opacity:1;
+			position:absolute;
+			left:0;
+			color:red;
+			bottom:20px;
+			margin-top:-75px;
+			font-size:60px;
+			width:400px;
+			height:100px;
+			margin-left:auto;
+			margin-right:auto;
+			text-align:center;
+		}
+	}
+}
+
+.object5 {
+	&:hover {
+		background:url(../img/jurassic.png) 0 0;
+		background-size:cover;
+		&:after {
+			content: "WTF!";
+			color:#fff;
+		}
+	}
+}
+
+@include keyframe(megazoom) {
+	0% { @include scale(1);  }
+	50% { @include scale(7);}
+}
+
+@include keyframe(rotating) {
+	0% { @include rotate(0);  }
+	50% { @include rotate(180);}
+}
+
+.object4 {
+	@include transition(all, 0.5s, ease-in-out);
+	@include animation(0, 1s, rotating, infinite);
+	&:hover {
+		background:#444;
+	}
+}
+
+.form {
+	input {
+		padding:15px;
+		font-size:30px;
+		border-radius:none;
+		border:1px solid #444;
+		height:60px;
+		width:400px;
+	}
+}
+
+#to-capital {
+	background:#7f7fff;
+	height:60px;
+	width:180px;
+	text-align:center;
+	padding:15px;
+	position:absolute;
+	top:50%;
+	margin-top:-30px;
+	margin-left:100px;
+	left:50%;
+	z-index:2;
+	@include transition(all, 500ms, ease-in-out);
+	&.active {
+		position:absolute;
+		top:0;
+		left:0;
+		width:100%;
+		height:100%;
+		margin:0;
+		font-size:40px;
+		p {
+			position:absolute;
+			top:50%;
+			margin-top:-30px;
+			width:100%;
+			.highlight {
+				color:#000;
+			}
+		}
+		&.success {
+			background:#458B00;
+			color:#fff;
+		}
+		&.error {
+			background:#FF2400;
+			color:#fff;
+		}
+	}
+}
+
+
+@media all and (max-width:768px) {
+	#to-capital {
+	    left: 0;
+	    margin: 30px 0;
+	    width: 100%;
+	}
+
+	.form {
+		input {
+			width:100%;
+		}
+	}
+}

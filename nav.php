@@ -8,5 +8,6 @@
   <li><a href="index6.php">6. AJAX</a></li>
   <li><a id="to-resize" href="#">7. Responsive</a></li>
   <li><a id="to-font" href="#">8. Web Fonts</a></li>
+  <li><a href="backmove1.php">9. Playground</a></li>
 </ul>
 </nav>

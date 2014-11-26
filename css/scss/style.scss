@@ -8,6 +8,9 @@
 
 body {
 	background:url(../img/footer_lodyas.png) repeat 0 0;
+	&.playground {
+		@include animation(0,5s,backmove,infinite);
+	}
 	font-size:20px;
 	&.font1 * { font-family: 'Indie Flower', cursive; }	
 	&.font2 * { font-family: 'Lobster', cursive; }
@@ -115,6 +118,11 @@ nav.main-nav {
 			color:#fff;
 		}
 	}
+}
+
+@include keyframe(backmove) {
+	0% { background-position:0 0; }	
+	50% { background-position:10% 10%; }	
 }
 
 @include keyframe(megazoom) {

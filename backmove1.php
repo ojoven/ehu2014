@@ -1,6 +1,8 @@
-
+<?php
+global $playground;
+$playground = true;
+?>
 <?php include('header.php'); ?>
-<?php include('nav.php'); ?>
 
 <div class="center-container">
   <div class="center">

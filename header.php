@@ -19,7 +19,9 @@
         <script src="js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
     </head>
     <?php
+    global $playground;
     $cache = new Cache();
     $font = $cache->fetch('font');
     ?>
-    <body class="<?php if ($font) { echo $font; } ?>">
+
+    <body class="<?php if ($font) { echo $font; } ?><?php if ($playground) { echo " playground"; } ?>">

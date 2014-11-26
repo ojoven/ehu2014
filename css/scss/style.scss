@@ -1,15 +1,19 @@
 @import '_mixins';
 @import '_animations';
 
+$backpattern: url(../img/footer_lodyas.png);
+$frontcolor:#FF2400;
+$backcolor:#7f7fff;
+
 * {
 	@include box-sizing(border-box);
 	font-family: 'Indie Flower', cursive;
 }
 
 body {
-	background:url(../img/footer_lodyas.png) repeat 0 0;
-	&.playground {
-		@include animation(0,5s,backmove,infinite);
+	background: $backpattern repeat 0 0;
+	&.changecolor {
+		background:$frontcolor;
 	}
 	font-size:20px;
 	&.font1 * { font-family: 'Indie Flower', cursive; }	
@@ -55,16 +59,19 @@ nav.main-nav {
 .object {
 	width:200px;
 	height:200px;
-	background:#FF2400;
+	background:$frontcolor;
 	margin:0 auto;	
 	cursor:pointer;
+	&.pattern,&.pattern:hover {
+		background: $backpattern repeat 0 0;
+	}
 }
 
 .object1 {
 	@include transition(all, 500ms, ease-in-out);
 	&:hover{ 
 		@include border-radius(50%);
-		background:#7f7fff;
+		background:$backcolor;
 	}
 }
 
@@ -120,9 +127,60 @@ nav.main-nav {
 	}
 }
 
+.objectborders {
+	border:100px solid $frontcolor;
+	background:rgba(0,0,0,0.4);
+	// We center it
+	position:absolute;
+	top:50%;
+	left:50%;
+	margin-top:-100px;
+	margin-left:-100px;
+	@include transition(all, 0.5s, ease-in-out);
+	&.full {
+		top:0;
+		left:0;
+		width:100%;
+		height:100%;
+		margin:0;
+		&:after {
+			content: "HELLO!";
+			position:absolute;
+			top:50%;
+			left:50%;
+			margin:-10px 0 0 -50px;
+			color:#fff;
+			font-size:70px;
+			opacity:0;
+			@include animation(0.4s,1s,megazoomv2,infinite);
+		}
+	}
+}
+
+@media all and (max-width:768px) {
+	.objectborders {
+		&.full {
+			border:10px solid $frontcolor;
+			&:after {
+				font-size:18px;
+				margin:-10px 0 0 -12px;
+			}
+		}
+	}
+}
+
+.backmove {
+	@include animation(0,5s,backmove,infinite);
+}
+
+@include keyframe(megazoomv2) {
+	0% { opacity:1; @include scale(1);  }
+	50% { opacity:1; @include scale(5);}
+}
+
 @include keyframe(backmove) {
 	0% { background-position:0 0; }	
-	50% { background-position:10% 10%; }	
+	50% { background-position:50px 50px; }	
 }
 
 @include keyframe(megazoom) {

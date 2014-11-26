@@ -24,4 +24,4 @@
     $font = $cache->fetch('font');
     ?>
 
-    <body class="<?php if ($font) { echo $font; } ?><?php if ($playground) { echo " playground"; } ?>">
+    <body class="<?php if ($font) { echo $font; } ?><?php if ($playground) { echo " backmove"; } ?>">

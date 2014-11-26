@@ -6,7 +6,7 @@ $playground = true;
 
 <div class="center-container">
   <div class="center">
-    <div class="object object1"></div>
+    <div id="to-change-backmove" class="object"></div>
   </div>
 </div>
 

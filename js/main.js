@@ -60,4 +60,30 @@ $(document).ready(function() {
 		$.post('font.php',data);
 	});
 
+	// Backmove
+	var flagBackMove = false;
+	$("#to-change-backmove").on('click',function() {
+		if (!flagBackMove) {
+			$("body").removeClass("backmove").addClass("changecolor");
+			$(".object").addClass("backmove").addClass("pattern");
+			flagBackMove = true;
+		} else {
+			$("body").addClass("backmove").removeClass("changecolor");
+			$(".object").removeClass("backmove").removeClass("pattern");
+			flagBackMove = false;
+		}
+	});
+
+	// Change Borders
+	var flagChangeBorders = false;
+	$("#to-change-borders").on('click',function() {
+		if (!flagChangeBorders) {
+			$(".objectborders").addClass("full");
+			flagChangeBorders = true;
+		} else {
+			$(".objectborders").removeClass("full");
+			flagChangeBorders = false;
+		}
+	});
+
 });
